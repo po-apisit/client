@@ -1,7 +1,6 @@
-export interface ICategory {
+export interface ICategoryResponse {
     _id: string;
     name:string;
-    label: string;
     description: string;
     createdAt: Date;
     updatedAt: Date;

@@ -1,6 +1,4 @@
-import { ISkillHero } from "./ISkillHero";
-
-export interface IHero {
+export interface IHeroResponse {
     _id: string;
     name: string;
     aliases: string;
@@ -9,8 +7,9 @@ export interface IHero {
     description: string;
     story: string;
     categoryId: string;
-    skills: ISkillHero[];
+    skills: string[];
     itemsId: string[];
+    public: "private" | "public"
     createdAt: Date;
     updatedAt: Date;
 }

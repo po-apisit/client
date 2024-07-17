@@ -1,15 +1,15 @@
-import { IHero } from '@/interface/IHero';
+import { IHeroResponse } from '@/interface/IHeroResponse';
 import { Avatar, Box, CardHeader, IconButton, Tooltip } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 
 type Props = {
-    hero: IHero;
+    hero: IHeroResponse;
 }
 
 export default function ButtonEditGameHeader({ hero }: Props) {
     const [file, setFile] = useState<File | null>(null);
-    const [data, setData] = useState<IHero>(hero);
+    const [data, setData] = useState<IHeroResponse>(hero);
     const [preview, setPreview] = useState<string | null>(null);
 
     useEffect(() => {
@@ -49,7 +49,7 @@ export default function ButtonEditGameHeader({ hero }: Props) {
     return (
         <CardHeader
             avatar={
-                <Box sx={{ position: 'relative', display: 'inline-block' }}>
+                <Box sx={{ position: 'relative', display: 'inline-block' }} >
                     <Tooltip title="อัฟโหลดรูป">
                         <IconButton
                             color='primary'

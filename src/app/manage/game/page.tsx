@@ -1,6 +1,6 @@
 'use client'
-import { ICategory } from '@/interface/ICategory'
-import { IHero } from '@/interface/IHero'
+import { ICategoryResponse } from '@/interface/ICategoryResponse'
+import { IHeroResponse } from '@/interface/IHeroResponse'
 import { useAppDispatch } from '@/store'
 import { categorySelector, FindallCategory } from '@/store/slice/category.slice'
 import { findallHero, heroSelector } from '@/store/slice/hero.slice'
@@ -9,6 +9,9 @@ import { blue } from '@mui/material/colors'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import ButtonEditGame from './component/ButtonEditGame'
+import ButtonAddCategory from './component/ButtonAddCategory'
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import ButtonEditCategory from './component/ButtonEditCategory'
 
 type Props = {}
 
@@ -39,16 +42,16 @@ export default function page({}: Props) {
             sx={{ px:3, py:1, bgcolor: selectCat === "all" ? blue[300] : "background.paper", borderRadius:1, cursor:"pointer" }} >
             <Typography variant="button">all</Typography></Stack>
             {
-              _categorySelector.categorys.map((cat:ICategory) =>
+              _categorySelector.categorys.map((cat:ICategoryResponse) =>
               <Stack 
               onClick={() => setSelectCat(cat._id) }
-              sx={{ px:3, py:1, bgcolor: selectCat === cat._id ? blue[300] : "background.paper", borderRadius:1, cursor:"pointer" }} key={cat._id} >
+              sx={{ px:3, py:1, bgcolor: selectCat === cat._id ? blue[300] : "background.paper", 
+                borderRadius:1, cursor:"pointer", position: 'relative', display: 'inline-block' }} 
+              key={cat._id} >
+                <ButtonEditCategory category={cat} />
                 <Typography variant="button">{cat.name}</Typography></Stack>)
             }
-            <Stack 
-            onClick={() => {} }
-            sx={{ px:3, py:1, bgcolor: "background.paper", borderRadius:1, cursor:"pointer" }} >
-            <Typography variant="button">+</Typography></Stack>
+            <ButtonAddCategory />
           </React.Fragment>
         }
       </Stack>
@@ -57,10 +60,11 @@ export default function page({}: Props) {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>INDEX</TableCell>
-              <TableCell>ID</TableCell>
-              <TableCell>NAME</TableCell>
-              <TableCell>Create</TableCell>
+              <TableCell>ลำดับ</TableCell>
+              <TableCell>รูป</TableCell>
+              <TableCell>ชื่อ</TableCell>
+              <TableCell>วันที่สร้าง</TableCell>
+              <TableCell>สถานะ</TableCell>
               <TableCell>Action</TableCell>
             </TableRow>
           </TableHead>
@@ -69,14 +73,14 @@ export default function page({}: Props) {
               _heroSelector.is_loading
               ? <Typography>Loading...</Typography>
               : (
-                _heroSelector.heros.filter((hero:IHero) => {
+                _heroSelector.heros.filter((hero:IHeroResponse) => {
                   if(selectCat === "all"){
                     return hero;
                   }
                   if(selectCat === hero.categoryId){
                     return hero;
                   }
-                }).map((hero:IHero, index:number) => (
+                }).map((hero:IHeroResponse, index:number) => (
                   <TableRow>
                   <TableCell>{index + 1}</TableCell>
                   <TableCell>{hero._id}</TableCell>
@@ -88,13 +92,19 @@ export default function page({}: Props) {
                 
               )
             }
+            {
+              selectCat !== "all" && (
                 <TableRow>
                   <TableCell></TableCell>
                   <TableCell></TableCell>
                   <TableCell></TableCell>
                   <TableCell></TableCell>
-                  <TableCell><Button variant="outlined" color="success" >เพิ่ม</Button></TableCell>
+                  <TableCell></TableCell>
+                  <TableCell><Button startIcon={<AddCircleIcon />} variant="outlined" color="success" >เพิ่ม</Button></TableCell>
                 </TableRow>
+              )
+            }
+                
           </TableBody>
         </Table>
       </Stack>
