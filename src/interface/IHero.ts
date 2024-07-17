@@ -5,6 +5,7 @@ export interface IHero {
     name: string;
     aliases: string;
     image: string;
+    image_cover: string;
     description: string;
     story: string;
     categoryId: string;
