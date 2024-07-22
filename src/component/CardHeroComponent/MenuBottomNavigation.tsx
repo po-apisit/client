@@ -22,11 +22,11 @@ export default function MenuBottomNavigation({screen, setScreen}: Props) {
     }}
   >
     <BottomNavigationAction value={0} label="Skill" icon={<AssistantIcon />} />
-    <BottomNavigationAction value={1} label="Assetserry" icon={<AutoFixHighIcon />} />
-    <BottomNavigationAction value={3} label="Description" icon={<AssignmentIcon />} />
-    <BottomNavigationAction value={4} label="เปรียบเที่ยบ" icon={<AppRegistrationIcon />} />
-    <BottomNavigationAction value={5} label="สกิน" icon={<CoPresentIcon />} />
-    <BottomNavigationAction value={6} label="ลำดับ" icon={<EmojiEventsIcon />} />
+    {/* <BottomNavigationAction value={1} label="Assetserry" icon={<AutoFixHighIcon />} /> */}
+    <BottomNavigationAction value={1} label="Description" icon={<AssignmentIcon />} />
+    <BottomNavigationAction value={2} label="เปรียบเที่ยบ" icon={<AppRegistrationIcon />} />
+    <BottomNavigationAction value={3} label="สกิน" icon={<CoPresentIcon />} />
+    <BottomNavigationAction value={4} label="ลำดับ" icon={<EmojiEventsIcon />} />
   </BottomNavigation>
   )
 }

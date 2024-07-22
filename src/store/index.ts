@@ -4,8 +4,9 @@ import userSlice from "./slice/user.slice";
 import categorySlice from "./slice/category.slice";
 import categoryItemSlice from "./slice/categoryitem.slice"
 import heroSlice from "./slice/hero.slice";
+import itemSlice from "./slice/item.slice";
 
-const reducer = { userSlice, categorySlice, heroSlice, categoryItemSlice };
+const reducer = { userSlice, categorySlice, heroSlice, categoryItemSlice, itemSlice };
 
 export const store = configureStore({
   reducer,

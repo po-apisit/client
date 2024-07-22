@@ -131,7 +131,7 @@ export default function RootHeroComponent({ hero, design, is_private }: Props) {
           )
         }
         {
-          screen === 3 && <DescriptonHeroComponent design={design} hero={newHero} setHero={setNewHero} />
+          screen === 1 && <DescriptonHeroComponent design={design} hero={newHero} setHero={setNewHero} />
         }
       </CardContent >
       {

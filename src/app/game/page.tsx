@@ -12,9 +12,9 @@ export default function page({ }: Props) {
   const [screen, setScreen] = useState<number>(0);
   return (
     <Grid container spacing={2}>
-      <Grid item md={12}>
+      {/* <Grid item md={12}>
         <BottomNavigationHero screen={screen} setScreen={setScreen} />
-      </Grid>
+      </Grid> */}
       <Grid item md={9} >
       </Grid>
       <Grid item md={3} >
