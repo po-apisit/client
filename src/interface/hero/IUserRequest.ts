@@ -1,5 +1,4 @@
-export interface IUser {
-    _id: string;
+export interface IUserRequest {
     name: string;
     url_profile: string;
     phone: string;
@@ -9,6 +8,4 @@ export interface IUser {
     image_profile: string;
     image_cover: string;
     role_user: "user" | "superuser" | "advert" | "officer" | "admin" | "superadmin";
-    createdAt: Date;
-    updatedAt: Date;
 }

@@ -1,6 +1,6 @@
 'use client'
-import { ICategory } from '@/interface/ICategory';
-import { IHero } from '@/interface/IHero';
+import { ICategoryResponse } from '@/interface/hero/ICategoryResponse';
+import { IHeroResponse } from '@/interface/hero/IHeroResponse';
 import { useAppDispatch } from '@/store';
 import { categorySelector, FindallCategory } from '@/store/slice/category.slice';
 import { findallHero, heroSelector, onSelectId } from '@/store/slice/hero.slice';
@@ -15,12 +15,10 @@ export default function ListHeroRovGame({}: Props) {
   const dispatch = useAppDispatch()
   const _categorySelector = useSelector(categorySelector);
   const _heroSelector = useSelector(heroSelector);
-  const [selectCategoryId, setSelectCategoryId] = useState<ICategory | null>(null);
+  const [selectCategoryId, setSelectCategoryId] = useState<ICategoryResponse | null>(null);
   const pathname = usePathname();
+  const router = useRouter();
 
-  const goto = (_id:string) => {
-    dispatch(onSelectId(_id));
-  }
 
   useEffect(() => {
     dispatch(FindallCategory());
@@ -28,7 +26,7 @@ export default function ListHeroRovGame({}: Props) {
   },[])
 
   return (
-    <Stack sx={{ bgcolor:"background.paper", borderRadius:2, p:2, minHeight:200 }} spacing={2} >
+    <Stack sx={{ bgcolor:"background.paper", borderRadius:2, p:1, minHeight:200 }} spacing={1} >
       {
         _categorySelector.is_loading 
         ? <Skeleton variant="rounded" sx={{ width:"100%" }} />
@@ -37,12 +35,12 @@ export default function ListHeroRovGame({}: Props) {
         : <Autocomplete
           disablePortal
           id="combo-box-demo"
-          onChange={(event: React.SyntheticEvent, value: ICategory | null) => {
+          onChange={(event: React.SyntheticEvent, value: ICategoryResponse | null) => {
             setSelectCategoryId(value);
           }}
           options={_categorySelector.categorys}
           sx={{ width: 230 }}
-          getOptionLabel={(option) => option.label}
+          getOptionLabel={(option) => option.name}
           renderOption={(props, option) => {
             const { key, ...optionProps } = props;
             return (
@@ -53,7 +51,7 @@ export default function ListHeroRovGame({}: Props) {
               {...optionProps}
             >
                 <Typography variant='caption' >
-                  {option.label}
+                  {option.name}
                   </Typography>
               </Box>
               
@@ -71,21 +69,32 @@ export default function ListHeroRovGame({}: Props) {
           ? <Typography>{_heroSelector.message_error}</Typography>
           : (
             <React.Fragment>
+              <List>
               {
-                _heroSelector.heros.filter((_hero:IHero) => {
-                  if(selectCategoryId === null){
-                    return _hero;
-                  } else if( selectCategoryId._id === _hero.categoryId ){
-                    return _hero;
+                _heroSelector.heros.filter((_hero:IHeroResponse) => {
+                  if(_hero.public === "public"){
+                    if(selectCategoryId === null){
+                      return _hero;
+                    } else if( selectCategoryId._id === _hero.categoryId ){
+                      return _hero;
+                    }
                   }
-                } ).map(( _hero:IHero) => (
-                  <List key={_hero._id}>
-                  <ListItemButton onClick={() => goto(_hero._id)} selected={ _heroSelector.selectId === _hero._id } >
+
+                } ).map(( _hero:IHeroResponse) => (
+                  
+                  <ListItemButton 
+                  
+                  key={_hero._id} 
+                  onClick={() => {
+                    router.push("/game/"+_hero.name)
+                  }} 
+                  selected={ pathname === "/game/" + _hero.name } >
                     <ListItemText secondary={_hero.name} />
                   </ListItemButton>
-                </List>
+                
                 ))
               }
+              </List>
             </React.Fragment>
     
           )

@@ -3,12 +3,15 @@ import HeroRovGame from '@/component/GameComponent/ListHeroGame/HeroRovGame'
 import ListHeroRovGame from '@/component/GameComponent/ListHeroGame/ListHeroRovGame'
 import { Grid } from '@mui/material'
 import React, { useState } from 'react'
-import BottomNavigationHero from './component/BottomNavigationHero'
+import BottomNavigationHero from '../component/BottomNavigationHero'
 
 type Props = {
+  params:{
+    namehero:string
+  }
 }
 
-export default function page({ }: Props) {
+export default function page({ params }: Props) {
   const [screen, setScreen] = useState<number>(0);
   return (
     <Grid container spacing={2}>
@@ -16,6 +19,7 @@ export default function page({ }: Props) {
         <BottomNavigationHero screen={screen} setScreen={setScreen} />
       </Grid>
       <Grid item md={9} >
+        <HeroRovGame />
       </Grid>
       <Grid item md={3} >
         <ListHeroRovGame />

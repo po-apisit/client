@@ -39,7 +39,7 @@ export default function MenuEntertainment({}: Props) {
           <ListItemText secondary="เกม" />
       </ListItemButton>
 
-      <ListItemButton onClick={() => router.push("/shotclip")  } selected={partname === "shotclip"}>
+      <ListItemButton onClick={() => router.push("/shotclip")  } selected={partname === "/shotclip"}>
           <ListItemIcon>
             <OndemandVideoIcon color="primary"  />
           </ListItemIcon>

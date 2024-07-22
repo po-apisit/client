@@ -1,7 +1,7 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Stack, TextField, Tooltip, Typography } from '@mui/material';
 import React, { useState } from 'react'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import { ICategoryRequest } from '@/interface/ICategoryRequest';
+import { ICategoryRequest } from '@/interface/hero/ICategoryRequest';
 import { useAppDispatch } from '@/store';
 import { CreateCategory } from '@/store/slice/category.slice';
 

@@ -1,9 +1,9 @@
-import { ICategoryResponse } from "@/interface/ICategoryResponse";
+import { ICategoryResponse } from "@/interface/hero/ICategoryResponse";
 import { createAsyncThunk, createSlice, GetThunkAPI, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
 import httpServerRov from "@/utils/http/httpServerRov";
 import { API } from "@/utils/instants";
-import { ICategoryRequest } from "@/interface/ICategoryRequest";
+import { ICategoryRequest } from "@/interface/hero/ICategoryRequest";
 
 export const FindallCategory = createAsyncThunk( "findall-category",async (_, thunk) => {
 
@@ -26,9 +26,7 @@ try {
     } else {
         return thunk.rejectWithValue({error:"error"})
     }
-} catch (error) {
-    console.log({error});
-    
+} catch (error) {    
     return thunk.rejectWithValue({error})
 }
 })

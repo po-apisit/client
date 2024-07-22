@@ -11,14 +11,12 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "รวบข้อมูล POV-PRO",
   description: "rov-pro.com เว็บรวบรวมข้อมูลเกี่ยวกับเกมส์ ROV",
-  keywords:["rov","rov-pro","เกม"]
+  keywords: ["rov", "rov-pro", "เกม"]
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -29,7 +27,7 @@ export default function RootLayout({
             </LayoutProvider>
           </StyledThemeProvider>
         </ReduxProvider>
-        </body>
+      </body>
     </html>
   );
 }

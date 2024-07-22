@@ -1,4 +1,6 @@
 export const API = {
     GetfindCategory: "category",
-    GetfindHero: "hero"
+    GetfindHero: "hero",
+    GetfindSkill: "skill",
+    CategoryItem: "category-item"
 }

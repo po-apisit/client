@@ -2,9 +2,10 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import userSlice from "./slice/user.slice";
 import categorySlice from "./slice/category.slice";
+import categoryItemSlice from "./slice/categoryitem.slice"
 import heroSlice from "./slice/hero.slice";
 
-const reducer = { userSlice, categorySlice, heroSlice };
+const reducer = { userSlice, categorySlice, heroSlice, categoryItemSlice };
 
 export const store = configureStore({
   reducer,

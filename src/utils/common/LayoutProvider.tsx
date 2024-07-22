@@ -17,11 +17,11 @@ export default function LayoutProvider({children}: Props) {
             <NavbarLayout />
         </Grid>
 
-        <Grid item md={12} lg={2}  >
+        <Grid item md={12} lg={3}  >
         <AsidebarLayout />
         </Grid>
 
-        <Grid item md={12} lg={10} px={2} >
+        <Grid item md={12} lg={9} px={2} >
         {children}
         </Grid>
   

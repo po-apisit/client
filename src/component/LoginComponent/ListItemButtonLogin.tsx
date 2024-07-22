@@ -14,7 +14,7 @@ export default function ListItemButtonLogin({}: Props) {
         <ListItemIcon>
             <AccountCircleIcon />
         </ListItemIcon>
-        <ListItemText primary="ลงชื่อเข้าใช้งาน" />
+        <ListItemText primary="ลงชื่อใช้งาน" />
     </ListItemButton>
     <Dialog open={open} onClose={() => setOpen(false) } maxWidth="sm" fullWidth >
       <DialogTitle>
